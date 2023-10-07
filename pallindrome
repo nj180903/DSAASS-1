@@ -1,0 +1,34 @@
+package dsa;
+public class PalindromicNumbers {
+    public static boolean isPalindrome(int num) {
+        int originalNum = num;
+        int reversedNum = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+        return originalNum == reversedNum;
+    }
+    public static void printPalindromesInRange(int left, int right) {
+        System.out.print("Palindrome numbers are [" + left + ", " + right + "]: ");
+        boolean foundPalindrome = false;
+        for (int num = left; num <= right; num++) {
+            if (isPalindrome(num)) {
+                foundPalindrome = true;
+                System.out.print(num + " ");
+            }
+        }
+        if (!foundPalindrome) {
+            System.out.print("No palindromes no found.");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        int min = 100;
+        int max = 200;
+        printPalindromesInRange(min, max);
+    }
+}
+
+
